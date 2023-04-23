@@ -22,13 +22,13 @@
   </thead>
   <tbody>
   <tbody>
-    <% @clinicas.each do |clinica| %>
+    <% @clinicas.each do |clinicas| %>
       <tr>
-        <td><%= clinica.id %></td>
-        <td><%= clinica.nome %></td>
-        <td><%= clinica.endereco %></td>
-        <td><%= clinica.numero %></td>
-        <td><%= clinica.estado %></td>
+        <td><%= link_to clinicas.id, clinica_path(clinicas) %></td>
+        <td><%= clinicas.nome %></td>
+        <td><%= clinicas.endereco %></td>
+        <td><%= clinicas.numero %></td>
+        <td><%= clinicas.estado %></td>
         <td><%= image_tag clinicas.logo, size: "60x65" %></td>
         <td>
         <%= link_to content_tag(:i,'Mostrar'),

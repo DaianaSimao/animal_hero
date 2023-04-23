@@ -4,7 +4,11 @@ class ClinicasController < ApplicationController
   # GET /clinicas
   # GET /clinicas.json
   def index
-    @clinicas = Clinica.all
+    if params[:id].nil?
+      @clinicas = Clinica.all
+    else
+      @clinicas = Clinica.where(id: params[:id])
+    end
   end
 
   # GET /clinicas/1
