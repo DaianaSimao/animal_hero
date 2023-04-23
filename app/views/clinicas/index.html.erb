@@ -1,30 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Clinicas</h1>
-
-<table>
+<%- model_class = Clinica -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+    <%= link_to t('.new', :default => t("helpers.links.new")),
+                new_clinica_path,
+                :class => 'btn btn-primary' %>
+  </h1>
+</div>
+<table class="table table-striped">
   <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Endereco</th>
-      <th>Numero</th>
-      <th>Estado</th>
-      <th>Logo</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:id) %></th>
+    <th><%= model_class.human_attribute_name(:nome) %></th>
+    <th><%= model_class.human_attribute_name(:endereco) %></th>
+    <th><%= model_class.human_attribute_name(:numero) %></th>
+    <th><%= model_class.human_attribute_name(:estado) %></th>
+    <th><%= model_class.human_attribute_name(:logo) %></th>
+    <th style="width: 170px" ><%=t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
   </thead>
-
+  <tbody>
   <tbody>
     <% @clinicas.each do |clinica| %>
       <tr>
+        <td><%= clinica.id %></td>
         <td><%= clinica.nome %></td>
         <td><%= clinica.endereco %></td>
         <td><%= clinica.numero %></td>
         <td><%= clinica.estado %></td>
-        <td><%= clinica.logo %></td>
-        <td><%= link_to 'Show', clinica %></td>
-        <td><%= link_to 'Edit', edit_clinica_path(clinica) %></td>
-        <td><%= link_to 'Destroy', clinica, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag clinicas.logo, size: "60x65" %></td>
+        <td>
+        <%= link_to content_tag(:i,'Mostrar'),
+                    clinica_path(clinicas), :class => 'btn btn-success btn-xs' %>
+        <%= link_to content_tag(:i,'Editar', class: ["fas", "fa-edit"]),
+                    edit_clinica_path(clinicas), :class => 'btn btn-primary btn-xs' %>
+        <%= link_to content_tag(:i,'Excluir', class: ["fas", "fa-trash"]),
+                    clinica_path(clinicas),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-xs btn-danger' %>
+      </td>
       </tr>
     <% end %>
   </tbody>
