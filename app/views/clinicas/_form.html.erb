@@ -14,35 +14,36 @@
   <div class="row">
     <div class="col-xs-4">
       <%= form.label :nome %>
-      <%= form.text_field :nome %>
+      <%= form.text_field :nome, class:"form-control"%>
     </div>
   
 
     <div class="col-xs-4">
       <%= form.label :endereco %>
-      <%= form.text_field :endereco %>
+      <%= form.text_field :endereco, class:"form-control" %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-4">
       <%= form.label :numero %>
-      <%= form.number_field :numero %>
+      <%= form.number_field :numero, class:"form-control" %>
     </div>
 
     <div class="col-xs-4">
-      <%= form.label :estado %>
-      <%= form.select :estado, Estado.pluck(:nome) %>
+      <%= form.label :logo %>
+      <%= form.text_field :logo, class:"form-control" %> 
     </div>
   </div>
 
   <div class="row">
     <div class="col-xs-4">
-      <%= form.label :logo %>
-      <%= form.text_field :logo %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <%= form.label :estado %>
+      <%= form.select :estado, Estado.pluck(:nome),{}, class:"form-control" %>
+    </div>
+  </div><br>
+    <div class="action">
+      <%= form.submit "Criar", class:"btn btn-primary btn-lg active" %>
+    </div><br>
+  
 <% end %>
