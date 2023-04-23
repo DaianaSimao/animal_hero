@@ -3,7 +3,7 @@
 <%- model_class = Clinica -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
-    <%= link_to t('.new', :default => t("helpers.links.new")),
+    <%= link_to "Cadastrar clinica",
                 new_clinica_path,
                 :class => 'btn btn-primary' %>
   </h1>
@@ -47,5 +47,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Clinica', new_clinica_path %>
